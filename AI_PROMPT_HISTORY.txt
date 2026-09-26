@@ -10,4 +10,16 @@ Gemini:
 
 5. now I want a dropdown on the top. where I can sect the orders on the labels like on time/delayed/not-received/no tracking. and in the component there will a state which order is being selected. and using the same ui we will show the different orders. and relevant information
 
-6. 
+6. remove the share icon and on the share icon give a icon for this drop down. and user can select orders from there
+
+7.the drop down design is very plain. give it a good design. also its overflowing the screen. make sure it's inside the area
+
+8. right now the 2 buttons are static. no functional. though I dont have backend yet but still i want to simulate theese 2 buttons. Just want them feel functional. when contact button is clicked show a simple modal with close button showing contact info or a simple info that our team has ben notified. we will reach out soon. or smilar like this. and for the issues an report button make something similar. but tailored to specific situation.  if the order status is 'Delivered but not received,' show a message like 'Thanks for letting us know, we've flagged this as a missing package and started an investigation' instead of a generic message. Please use a simple modal or toast notification for this, nothing needs to be saved anywhere, it just needs to look like something happened when I click the button
+
+9. two buttons haave similar feature. for the contact i wnat something related to contacting the team. like calling or messaging. and for the report an issue i want a field for the user to enter the issue. 
+
+10. break the code codebase into reusable components.
+
+11. make the modals chat and call button's pointer to cursor.
+
+12. 
