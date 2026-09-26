@@ -1,0 +1,7 @@
+Gemini:
+
+1. Create a folder on the root called data. Inside it, create a .js file with 4 fake orders (one for each situation: normal/on-time, delayed, delivered-but-not-received, tracking-not-started-yet). Each order should have the same fields: id, status (processing/shipped/out for delivery/delivered), flags for delayed and deliveredNotReceived and trackingStarted, a delivery estimate message, and product info (name, quantity)
+
+2. now build a mock interface  for a normal order(no logic yet). using the order ORD-1001 data.  it will be mobile design only. on the top of the page the order id with relevant icon. then a horzontal progress bar. only the current state is highlighted. rest are gray. then show the product info. then lastly two buttons for Contact support and Report an issue, u should use react icon,keep it looking clean and modern like a real e-commerce app, and since this is a mobile screen keep the whole page centered with a max width around 400px so it still looks like a phone screen even on a laptop, using Tailwind for all the styling. 
+
+3. 
