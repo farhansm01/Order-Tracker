@@ -4,4 +4,10 @@ Gemini:
 
 2. now build a mock interface  for a normal order(no logic yet). using the order ORD-1001 data.  it will be mobile design only. on the top of the page the order id with relevant icon. then a horzontal progress bar. only the current state is highlighted. rest are gray. then show the product info. then lastly two buttons for Contact support and Report an issue, u should use react icon,keep it looking clean and modern like a real e-commerce app, and since this is a mobile screen keep the whole page centered with a max width around 400px so it still looks like a phone screen even on a laptop, using Tailwind for all the styling. 
 
-3. 
+3. make it responsive from 360px - 430px. the buttons and the products name need to be fixed. the product name is being truncated.
+
+4. make it responsive from 360px - 430px. the buttons and the products name need to be fixed. the product name is being truncated.
+
+5. now I want a dropdown on the top. where I can sect the orders on the labels like on time/delayed/not-received/no tracking. and in the component there will a state which order is being selected. and using the same ui we will show the different orders. and relevant information
+
+6. 
