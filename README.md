@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Order Tracker
 
-## Getting Started
+I built this as a redesign of an order tracking screen for an e-commerce app. The original only showed a plain status label (Processing/Shipped/etc), which users found confusing. This version shows a clear visual timeline, the current status, delivery estimate, product info, and support options, and it also handles a few tricky real-world situations like a delayed order, an order marked delivered that the customer says they never got, and an order that doesn't have tracking info yet.
 
-First, run the development server:
+## Live demo
+https://order-tracker-ivory.vercel.app/
 
+## Built with
+- Next.js
+- Tailwind CSS
+- lucide-react for icons
+
+## What it does
+- Shows order progress as a horizontal timeline (Processing → Shipped → Out for Delivery → Delivered)
+- Shows the current status and delivery estimate clearly
+- Shows basic product info (name, quantity)
+- Has Contact support and Report an issue buttons
+- Handles 3 edge cases in the same screen:
+  - Order is delayed
+  - Order says delivered but customer didn't receive it
+  - Tracking isn't available yet
+- Works well on mobile screen sizes (360px to 430px wide)
+
+## How to run it locally
+
+Clone it:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/farhansm01/Order-Tracker.git
+cd Order-Tracker
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install the packages:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Start it:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Then just open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## A few notes
+- Since there's no backend or any real functionality to update order status live, I created 4 mock orders in `data/mockOrders.js`, each representing one of the required scenarios (on-time, delayed, delivered but not received, and no tracking yet)
+- The "Preview as" dropdown at the top just switches between these 4 mock orders, so you can see how the same screen adapts to each situation, it's not a real feature, just a way to demonstrate all 4 states without needing a backend
+- All other data (product info, delivery estimates, etc.) is also mocked
+- My AI prompt history for this project is in `AI_PROMPT_HISTORY.txt`

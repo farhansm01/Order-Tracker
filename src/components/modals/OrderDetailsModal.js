@@ -1,18 +1,22 @@
 "use client";
 
-import { FiX, FiFileText, FiMapPin, FiCreditCard, FiPackage } from "react-icons/fi";
+import { FiX, FiFileText, FiMapPin, FiCreditCard, FiPackage, FiTruck } from "react-icons/fi";
 
 export default function OrderDetailsModal({ order, onClose }) {
-  // Mock pricing calculation based on quantity
-  const unitPrice = 129.99;
-  const subtotal = (unitPrice * order.product.quantity).toFixed(2);
-  const shipping = "Free";
-  const tax = (subtotal * 0.08).toFixed(2);
-  const total = (parseFloat(subtotal) + parseFloat(tax)).toFixed(2);
+  const {
+    id,
+    orderDate,
+    carrier,
+    trackingNumber,
+    shippingAddress,
+    paymentMethod,
+    product,
+    summary,
+  } = order;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="fixed inset-0 z-40" onClick={onClose} />
+      <div className="fixed inset-0 z-40 cursor-pointer" onClick={onClose} />
 
       <div className="relative z-50 w-full max-w-[380px] bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 p-5 space-y-4 max-h-[85vh] overflow-y-auto animate-in zoom-in-95 duration-200">
         
@@ -24,7 +28,7 @@ export default function OrderDetailsModal({ order, onClose }) {
             </div>
             <div>
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">Order Details</h3>
-              <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500">{order.id}</p>
+              <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500">{id} • Placed {orderDate}</p>
             </div>
           </div>
           <button
@@ -33,6 +37,15 @@ export default function OrderDetailsModal({ order, onClose }) {
           >
             <FiX className="w-5 h-5" />
           </button>
+        </div>
+
+        {/* Carrier Info */}
+        <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-100 dark:border-slate-800 flex items-center gap-2.5 text-xs text-slate-600 dark:text-slate-300">
+          <FiTruck className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
+          <div className="min-w-0 flex-1">
+            <p className="font-bold text-slate-900 dark:text-white">{carrier}</p>
+            <p className="text-[10px] font-mono text-slate-400 dark:text-slate-500 truncate">Tracking: {trackingNumber}</p>
+          </div>
         </div>
 
         {/* Item Summary */}
@@ -44,11 +57,11 @@ export default function OrderDetailsModal({ order, onClose }) {
                 <FiPackage className="w-4 h-4" />
               </div>
               <div className="min-w-0">
-                <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{order.product.name}</p>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400">Qty: {order.product.quantity} × ${unitPrice}</p>
+                <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{product.name}</p>
+                <p className="text-[10px] text-slate-500 dark:text-slate-400">Qty: {product.quantity} × ${product.unitPrice.toFixed(2)}</p>
               </div>
             </div>
-            <span className="text-xs font-bold text-slate-900 dark:text-white shrink-0">${subtotal}</span>
+            <span className="text-xs font-bold text-slate-900 dark:text-white shrink-0">${summary.subtotal.toFixed(2)}</span>
           </div>
         </div>
 
@@ -58,8 +71,8 @@ export default function OrderDetailsModal({ order, onClose }) {
           <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-100 dark:border-slate-800 flex items-start gap-2.5 text-xs text-slate-600 dark:text-slate-300">
             <FiMapPin className="w-4 h-4 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0" />
             <div>
-              <p className="font-bold text-slate-900 dark:text-white">Alex Morgan</p>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400">742 Evergreen Terrace, Suite 100<br />Springfield, OR 97477</p>
+              <p className="font-bold text-slate-900 dark:text-white">{shippingAddress.name}</p>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400">{shippingAddress.street}<br />{shippingAddress.cityStateZip}</p>
             </div>
           </div>
         </div>
@@ -69,7 +82,7 @@ export default function OrderDetailsModal({ order, onClose }) {
           <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Payment Method</h4>
           <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-100 dark:border-slate-800 flex items-center gap-2.5 text-xs text-slate-600 dark:text-slate-300">
             <FiCreditCard className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-            <span className="font-semibold text-slate-900 dark:text-white">Visa ending in •••• 4242</span>
+            <span className="font-semibold text-slate-900 dark:text-white">{paymentMethod}</span>
           </div>
         </div>
 
@@ -77,19 +90,21 @@ export default function OrderDetailsModal({ order, onClose }) {
         <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-100 dark:border-slate-800 space-y-1.5 text-xs">
           <div className="flex justify-between text-slate-500 dark:text-slate-400">
             <span>Subtotal</span>
-            <span>${subtotal}</span>
+            <span>${summary.subtotal.toFixed(2)}</span>
           </div>
           <div className="flex justify-between text-slate-500 dark:text-slate-400">
             <span>Shipping</span>
-            <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{shipping}</span>
+            <span className="text-emerald-600 dark:text-emerald-400 font-semibold">
+              {summary.shippingFee === 0 ? "Free" : `$${summary.shippingFee.toFixed(2)}`}
+            </span>
           </div>
           <div className="flex justify-between text-slate-500 dark:text-slate-400">
             <span>Estimated Tax</span>
-            <span>${tax}</span>
+            <span>${summary.tax.toFixed(2)}</span>
           </div>
           <div className="border-t border-slate-200 dark:border-slate-700 pt-1.5 flex justify-between font-bold text-slate-900 dark:text-white text-sm">
             <span>Total Paid</span>
-            <span>${total}</span>
+            <span>${summary.total.toFixed(2)}</span>
           </div>
         </div>
 

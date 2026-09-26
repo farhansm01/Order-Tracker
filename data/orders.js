@@ -6,9 +6,25 @@ export const orders = [
     deliveredNotReceived: false,
     trackingStarted: true,
     deliveryEstimate: "Estimated delivery: Tomorrow by 5 PM",
+    orderDate: "Sep 24, 2026",
+    carrier: "FedEx Express",
+    trackingNumber: "FX-982341091",
+    shippingAddress: {
+      name: "Alex Morgan",
+      street: "742 Evergreen Terrace, Suite 100",
+      cityStateZip: "Springfield, OR 97477",
+    },
+    paymentMethod: "Visa ending in •••• 4242",
     product: {
       name: "Wireless Noise-Canceling Headphones",
       quantity: 1,
+      unitPrice: 199.99,
+    },
+    summary: {
+      subtotal: 199.99,
+      shippingFee: 0.0,
+      tax: 16.0,
+      total: 215.99,
     },
   },
   {
@@ -18,9 +34,25 @@ export const orders = [
     deliveredNotReceived: false,
     trackingStarted: true,
     deliveryEstimate: "Delayed in transit due to severe weather. New estimate: Oct 2",
+    orderDate: "Sep 20, 2026",
+    carrier: "UPS Ground",
+    trackingNumber: "1Z999AA10123456784",
+    shippingAddress: {
+      name: "Alex Morgan",
+      street: "742 Evergreen Terrace, Suite 100",
+      cityStateZip: "Springfield, OR 97477",
+    },
+    paymentMethod: "Mastercard ending in •••• 8819",
     product: {
       name: "Ergonomic Mechanical Keyboard",
       quantity: 1,
+      unitPrice: 149.5,
+    },
+    summary: {
+      subtotal: 149.5,
+      shippingFee: 0.0,
+      tax: 11.96,
+      total: 161.46,
     },
   },
   {
@@ -30,9 +62,25 @@ export const orders = [
     deliveredNotReceived: true,
     trackingStarted: true,
     deliveryEstimate: "Delivered on Sep 24. (Reported not received)",
+    orderDate: "Sep 18, 2026",
+    carrier: "USPS Priority Mail",
+    trackingNumber: "9400111202493019283741",
+    shippingAddress: {
+      name: "Alex Morgan",
+      street: "742 Evergreen Terrace, Suite 100",
+      cityStateZip: "Springfield, OR 97477",
+    },
+    paymentMethod: "Apple Pay (Visa •••• 4242)",
     product: {
       name: "Ultra-Wide 4K Monitor",
       quantity: 2,
+      unitPrice: 349.0,
+    },
+    summary: {
+      subtotal: 698.0,
+      shippingFee: 0.0,
+      tax: 55.84,
+      total: 753.84,
     },
   },
   {
@@ -42,9 +90,25 @@ export const orders = [
     deliveredNotReceived: false,
     trackingStarted: false,
     deliveryEstimate: "Tracking details will be updated once the order is shipped.",
+    orderDate: "Sep 25, 2026",
+    carrier: "Pending Assignment",
+    trackingNumber: "Not assigned yet",
+    shippingAddress: {
+      name: "Alex Morgan",
+      street: "742 Evergreen Terrace, Suite 100",
+      cityStateZip: "Springfield, OR 97477",
+    },
+    paymentMethod: "PayPal (alex.morgan@email.com)",
     product: {
       name: "USB-C Multi-Port Adapter",
       quantity: 3,
+      unitPrice: 29.99,
+    },
+    summary: {
+      subtotal: 89.97,
+      shippingFee: 4.99,
+      tax: 7.2,
+      total: 102.16,
     },
   },
 ];
